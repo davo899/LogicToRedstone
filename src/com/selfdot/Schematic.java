@@ -10,11 +10,6 @@ import java.util.List;
 
 public class Schematic {
 
-    // 0 - AIR
-    // 1 - CONCRETE
-    // 2 - WIRE
-    // 3 - TORCH
-    // 4 - WALL_TORCH
     private static final List<IntTag> REDSTONE_PALETTE = new ArrayList<>();
     static {
         REDSTONE_PALETTE.add(new IntTag("minecraft:air", 0));
