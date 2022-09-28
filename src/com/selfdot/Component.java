@@ -50,7 +50,7 @@ public class Component {
                 2, 2, 0, 0, 0,
                 3, 0, 0, 2, 0,
         };
-        XOR_GATE = new Component(new Schematic("andGate", 5, 3, 3, xorGate));
+        XOR_GATE = new Component(new Schematic("xorGate", 5, 3, 3, xorGate));
         XOR_GATE.addInput(-1, 1, 0);
         XOR_GATE.addInput(-1, 1, 2);
         XOR_GATE.addOutput(5, 1, 1);
