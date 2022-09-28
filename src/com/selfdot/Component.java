@@ -1,8 +1,13 @@
 package com.selfdot;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+
 public class Component {
 
-
+    private final List<int[]> inputs = new ArrayList<>();
+    private final List<int[]> outputs = new ArrayList<>();
     private final Schematic schematic;
     public Component(Schematic schematic) {
         this.schematic = schematic;
@@ -28,6 +33,9 @@ public class Component {
                 3, 0
         };
         AND_GATE = new Component(new Schematic("andGate", 2, 3, 2, andGate));
+        AND_GATE.addInput(-1, 0, 0);
+        AND_GATE.addInput(-1, 0, 2);
+        AND_GATE.addOutput(2, 0, 1);
 
         int[] xorGate = new int[] {
                 0, 0, 1, 0, 0,
@@ -43,10 +51,21 @@ public class Component {
                 3, 0, 0, 2, 0,
         };
         XOR_GATE = new Component(new Schematic("andGate", 5, 3, 3, xorGate));
+        XOR_GATE.addInput(-1, 1, 0);
+        XOR_GATE.addInput(-1, 1, 2);
+        XOR_GATE.addOutput(5, 1, 1);
     }
 
     public Schematic getSchematic() {
         return schematic;
+    }
+
+    public void addInput(int x, int y, int z) {
+        inputs.add(new int[] {x, y, z});
+    }
+
+    public void addOutput(int x, int y, int z) {
+        outputs.add(new int[] {x, y, z});
     }
 
 }
