@@ -19,6 +19,7 @@ public class Schematic {
         );
         REDSTONE_PALETTE.add(new IntTag("minecraft:redstone_torch[lit=false]", 3));
         REDSTONE_PALETTE.add(new IntTag("minecraft:redstone_wall_torch[facing=east,lit=false]", 4));
+        REDSTONE_PALETTE.add(new IntTag("minecraft:lever[facing=east,face=floor,powered=false]", 5));
     }
 
     private final byte[] blocks;

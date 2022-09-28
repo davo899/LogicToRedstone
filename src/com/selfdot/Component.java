@@ -11,7 +11,8 @@ public class Component {
     // 1 - CONCRETE
     // 2 - WIRE
     // 3 - TORCH
-    // 4 - WALL_TORCH
+    // 4 - WALL TORCH
+    // 5 - LEVER
 
     private static final Component AND_GATE;
     private static final Component XOR_GATE;
