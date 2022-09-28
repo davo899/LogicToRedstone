@@ -44,12 +44,22 @@ public class Schematic {
         }
     }
 
+    public int getBlock(int x, int y, int z) {
+        return blocks[x + (z * width) + (y * width * length)];
+    }
+
     public void setBlock(int block, int x, int y, int z) {
         blocks[x + (z * width) + (y * width * length)] = (byte) block;
     }
 
     public void placeSubSchematic(Schematic sub, int x, int y, int z) {
-
+        for (int i = 0; i < sub.width; i++) {
+            for (int j = 0; j < sub.height; j++) {
+                for (int k = 0; k < sub.length; k++) {
+                    setBlock(sub.getBlock(i, j, k), x + i, y + j, z + k);
+                }
+            }
+        }
     }
 
     public void generateFile() {
