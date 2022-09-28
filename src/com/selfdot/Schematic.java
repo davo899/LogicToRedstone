@@ -28,16 +28,16 @@ public class Schematic {
     private final short length;
     private final short height;
 
-    public Schematic(String name, short w, short l, short h) {
+    public Schematic(String name, int w, int l, int h) {
         this.name = name;
-        this.width = w;
-        this.length = l;
-        this.height = h;
+        this.width = (short) w;
+        this.length = (short) l;
+        this.height = (short) h;
         this.blocks = new byte[w * l * h];
         Arrays.fill(blocks, (byte) 0);
     }
 
-    public Schematic(String name, short w, short l, short h, int[] b) {
+    public Schematic(String name, int w, int l, int h, int[] b) {
         this(name, w, l, h);
 
         for (int i = 0; i < blocks.length; i++) {
