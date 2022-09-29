@@ -45,6 +45,18 @@ public class Schematic {
         }
     }
 
+    public short getWidth() {
+        return width;
+    }
+
+    public short getLength() {
+        return length;
+    }
+
+    public short getHeight() {
+        return height;
+    }
+
     public int getBlock(int x, int y, int z) {
         return blocks[x + (z * width) + (y * width * length)];
     }
@@ -71,7 +83,7 @@ public class Schematic {
         file.setCompoundTag("Palette", palette);
         file.setInt("PaletteMax", REDSTONE_PALETTE.size());
 
-        file.setInt("Version", 2);
+        file.setInt("Version", 1);
         file.setInt("DataVersion", 3120);
 
         file.setShort("Width", width);

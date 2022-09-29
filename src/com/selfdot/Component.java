@@ -2,13 +2,12 @@ package com.selfdot;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class Component {
 
     private final List<int[]> inputs = new ArrayList<>();
     private final List<int[]> outputs = new ArrayList<>();
-    private final Schematic schematic;
+    protected Schematic schematic;
     public Component(Schematic schematic) {
         this.schematic = schematic;
     }
@@ -20,8 +19,8 @@ public class Component {
     // 4 - WALL TORCH
     // 5 - LEVER
 
-    private static final Component AND_GATE;
-    private static final Component XOR_GATE;
+    public static final Component AND_GATE;
+    public static final Component XOR_GATE;
     static {
         int[] andGate = new int[] {
                 1, 0,
@@ -66,6 +65,14 @@ public class Component {
 
     public void addOutput(int x, int y, int z) {
         outputs.add(new int[] {x, y, z});
+    }
+
+    public List<int[]> getInputs() {
+        return inputs;
+    }
+
+    public List<int[]> getOutputs() {
+        return outputs;
     }
 
 }
