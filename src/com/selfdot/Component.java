@@ -18,6 +18,7 @@ public class Component {
     // 3 - TORCH
     // 4 - WALL TORCH
     // 5 - LEVER
+    // 6 - LAMP
 
     public static final Component AND_GATE;
     public static final Component XOR_GATE;
