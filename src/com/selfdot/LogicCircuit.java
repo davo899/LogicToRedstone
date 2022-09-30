@@ -8,10 +8,23 @@ import java.util.Scanner;
 
 public class LogicCircuit {
 
+    private Schematic circuitSchematic = new Schematic("Circuit", 0, 0, 0);
     private final Layer outputLayer = new Layer();
     private final List<Layer> layers = new ArrayList<>();
 
     public LogicCircuit() { }
+
+    private void connectLayer(Layer layer) {
+        Schematic newSchematic = new Schematic(
+                "Circuit",
+                circuitSchematic.getWidth() + layer.schematic.getWidth() + (2 * layer.getOutputs().size()) + 2,
+                Math.max(circuitSchematic.getLength(), layer.schematic.getLength()),
+                Math.max(circuitSchematic.getHeight(), layer.schematic.getHeight())
+        );
+        newSchematic.placeSubSchematic(circuitSchematic, 0, 0, 0);
+        newSchematic.placeSubSchematic(layer.schematic, circuitSchematic.getWidth(), 0, 0);
+        circuitSchematic = newSchematic;
+    }
 
     public void readCircuitFile(String filename) throws IllegalArgumentException {
         List<NamedComponent> components = new ArrayList<>();
@@ -48,7 +61,6 @@ public class LogicCircuit {
         for (NamedComponent namedComponent : components) {
             int layer = 0;
             for (String input : namedComponent.getInputNames()) {
-                System.out.println(input);
                 for (int i = 0; i < layers.size(); i++) {
                     if (layers.get(i).containsComponent(input)) {
                         layer = i + 1;
@@ -62,9 +74,19 @@ public class LogicCircuit {
 
             layers.get(layer).addComponent(namedComponent);
         }
+
+        for (Layer layer : layers) {
+            connectLayer(layer);
+        }
+
+        connectLayer(outputLayer);
     }
 
     public List<Layer> getLayers() {
         return layers;
+    }
+
+    public Schematic getCircuitSchematic() {
+        return circuitSchematic;
     }
 }

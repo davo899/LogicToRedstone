@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Component {
 
-    private final List<int[]> inputs = new ArrayList<>();
-    private final List<int[]> outputs = new ArrayList<>();
+    protected final List<int[]> inputs = new ArrayList<>();
+    protected final List<int[]> outputs = new ArrayList<>();
     protected Schematic schematic;
     public Component(Schematic schematic) {
         this.schematic = schematic;
