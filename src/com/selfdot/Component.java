@@ -22,6 +22,8 @@ public class Component {
 
     public static final Component AND_GATE;
     public static final Component XOR_GATE;
+    public static final Component INPUT;
+    public static final Component OUTPUT;
     static {
         int[] andGate = new int[] {
                 1, 0,
@@ -54,6 +56,23 @@ public class Component {
         XOR_GATE.addInput(-1, 1, 0);
         XOR_GATE.addInput(-1, 1, 2);
         XOR_GATE.addOutput(5, 1, 1);
+
+
+        int[] input = new int[] {
+                1,
+
+                5,
+        };
+        INPUT = new Component(new Schematic("input", 1, 1, 2, input));
+        INPUT.addOutput(1, 1, 0);
+
+        int[] output = new int[] {
+                0,
+
+                6,
+        };
+        OUTPUT = new Component(new Schematic("output", 1, 1, 2, output));
+        OUTPUT.addInput(-1, 1, 0);
     }
 
     public Schematic getSchematic() {
