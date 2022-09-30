@@ -48,14 +48,15 @@ public class LogicCircuit {
         for (NamedComponent namedComponent : components) {
             int layer = 0;
             for (String input : namedComponent.getInputNames()) {
+                System.out.println(input);
                 for (int i = 0; i < layers.size(); i++) {
                     if (layers.get(i).containsComponent(input)) {
-                        layer = i;
+                        layer = i + 1;
                     }
                 }
             }
 
-            if (layer > layers.size()) {
+            while (layer >= layers.size()) {
                 layers.add(new Layer());
             }
 
@@ -63,4 +64,7 @@ public class LogicCircuit {
         }
     }
 
+    public List<Layer> getLayers() {
+        return layers;
+    }
 }

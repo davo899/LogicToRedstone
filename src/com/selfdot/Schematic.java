@@ -24,7 +24,7 @@ public class Schematic {
     }
 
     private final byte[] blocks;
-    private final String name;
+    private String name;
     private final short width;
     private final short length;
     private final short height;
@@ -44,6 +44,10 @@ public class Schematic {
         for (int i = 0; i < blocks.length; i++) {
             blocks[i] = (byte) b[i];
         }
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public short getWidth() {
